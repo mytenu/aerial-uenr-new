@@ -2,6 +2,13 @@
 Smart Farm Monitor - AI-Powered Precision Agriculture
 Developed by UENR, ATPS & IDRC (2025)
 """
+import sys
+import types
+
+# ---- Fake cv2 to bypass OpenGL crashes on Streamlit Cloud ----
+sys.modules['cv2'] = types.ModuleType('cv2')
+sys.modules['cv2'].imread = lambda *args, **kwargs: None
+sys.modules['cv2'].imwrite = lambda *args, **kwargs: None
 
 import streamlit as st
 import numpy as np
